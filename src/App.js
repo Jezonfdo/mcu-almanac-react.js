@@ -16,8 +16,8 @@ class App extends Component {
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response=> response.json())
-      .then(users => {this.setState({ heros: users})});
+      .then(response => response.json())
+      .then(users => {this.setState({ heros: heros})});
   }
 
   onSearchChange = (event) => {
@@ -25,9 +25,9 @@ class App extends Component {
   }
 
   render() {
-    const { heros, searchfield } = this.state;
-    const filteredheros = heros.filter(hero =>{
-      return hero.name.toLowerCase().includes(searchfield.toLowerCase());
+    var { heros, searchfield } = this.state;
+    var filteredheros = heros.filter(hero =>{
+      return hero.name.toLowerCase().includes(searchfield.toLowerCase()) || hero.heroName.toLowerCase().includes(searchfield.toLowerCase());
     })
     return !heros.length ?
       <h1>Loading</h1> :
